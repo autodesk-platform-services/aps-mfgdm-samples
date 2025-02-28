@@ -28,7 +28,7 @@ let info = await myApsApp.getModelHierarchy(
 
 if (info) {
 	console.log("Model hierarchy:");
-	printInfo(info.allModelOccurrences, info, "");
+	printInfo(info.allOccurrences, info, "");
 } 
 
 function printInfo (componentVersions, componentVersion, indent) {
