@@ -38,7 +38,7 @@ function printInfo (properties, indent) {
       printInfo(property, indent + "  ");
       continue;
     }
-    console.log(`${indent}${propertyName}: ${property.displayValue} [${property.propertyDefinition.units.name}]`);
+    console.log(`${indent}${propertyName}: ${property.displayValue} [${property.definition.units.name}]`);
   }
 }
 
