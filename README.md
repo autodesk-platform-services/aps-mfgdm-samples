@@ -19,11 +19,7 @@ This repository contains several samples illustrating use of Manufacturing Data 
    
 	-  based on the **path to a model** (hub name, project name and file name) you can get the thumbnail of a given model.
 
-3. [Generate STEP file for Component](./3.Generate%20STEP%20file%20for%20Component)
-   
-	-  based on the **path to a model** (hub name, project name and file name) generate a STEP file for a given model.
-
-4. [Get Physical Properties for Component](./4.Get%20Physical%20Properties%20for%20Component)
+4. [Get Physical Properties for Component](./3.Get%20Physical%20Properties%20for%20Component)
    
 	-  based on the **path to a model** (hub name, project name and file name) generate a physical properties (like bounding box, mass, etc) for a given model.
 

@@ -28,15 +28,15 @@ let info = await myApsApp.getModelHierarchy(
 
 if (info) {
 	console.log("Model hierarchy:");
-	printInfo(info.allOccurrences, info, "");
+	printInfo(info.assemblyRelations, info, "");
 } 
 
-function printInfo (componentVersions, componentVersion, indent) {
-  console.log(indent + componentVersion.name);
-  let subOccurrences = componentVersions.results.filter(
-    item => item.parentComponentVersion.id === componentVersion.id);
+function printInfo (models, model, indent) {
+  console.log(indent + model.name.displayValue);
+  let subOccurrences = models.results.filter(
+    item => item.fromModel.id === model.id);
   for (let occurrence of subOccurrences) {
-    printInfo(componentVersions, occurrence.componentVersion, indent + "  ");
+    printInfo(models, occurrence.toModel, indent + "  ");
   }
 }
 

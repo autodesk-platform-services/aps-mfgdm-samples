@@ -6,7 +6,7 @@ import MyAuth from './auth.js';
 const clientId = '<YOUR_CLIENT_ID>';
 const clientSecret = '<YOUR_CLIENT_SECRET>';
 const hubName = '<YOUR_HUB_NAME>';
-const projectName = '<YOUR_PROJECT_NAME>'; 
+const projectName = '<YOUR_PROJECT_NAME>';
 const componentName = '<YOUR_COMPONENT_NAME>';
 
 // Create an instance of auth.js.
