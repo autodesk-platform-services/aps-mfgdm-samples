@@ -4,7 +4,7 @@ import axios from "axios";
 // Application constructor
 export default class App {
   constructor(accessToken) {
-    this.graphAPI = "https://developer.api.autodesk.com/mfg/graphql";
+    this.graphAPI = "https://developer.api.autodesk.com/mfg/v3/graphql";
     this.accessToken = accessToken;
   }
 
@@ -68,7 +68,7 @@ export default class App {
     }
   }
 
-  async getComponentVersionId(projectId, componentName) {
+  async getModelId(projectId, componentName) {
     try {
       // Get first batch of occurrences
       let response = await this.sendQuery(
@@ -79,7 +79,7 @@ export default class App {
               results {
                 ... on DesignItem {
                   name
-                  tipRootComponentVersion {
+                  tipRootModel {
                     id
                   }
                 }
@@ -93,8 +93,8 @@ export default class App {
         }
       );
 
-      let componentVersionId = response.data.data.project.items.results[0].tipRootComponentVersion.id;
-      return componentVersionId;
+      let modelId = response.data.data.project.items.results[0].tipRootModel.id;
+      return modelId;
     } catch (err) {
       console.log("There was an issue: " + err.message);
     }
@@ -105,12 +105,12 @@ export default class App {
     try {
       let projectId = await this.getProjectId(hubName, projectName);
 
-      let componentVersionId = await this.getComponentVersionId(projectId, componentName);
+      let modelId = await this.getModelId(projectId, componentName);
 
       // Get first batch of occurrences
       let response = await this.sendQuery(
-        `query GetModelHierarchy($componentVersionId: ID!) {
-          componentVersion(componentVersionId: $componentVersionId) {
+        `query GetModelHierarchy($modelId: ID!) {
+          model(modelId: $modelId) {
             id
             name 
             allOccurrences {
@@ -130,7 +130,7 @@ export default class App {
           }
         }`,
         {
-          componentVersionId
+          modelId
         }
       );
 
@@ -141,8 +141,8 @@ export default class App {
       // Keep getting the rest of the occurrences if needed
       while (cursor) {
         response = await this.sendQuery(
-          `query GetModelHierarchy($componentVersionId: ID!, $cursor: String) {
-            componentVersion(componentVersionId: $componentVersionId) {
+          `query GetModelHierarchy($modelId: ID!, $cursor: String) {
+            componentVersion(modelId: $modelId) {
               allOccurrences (pagination: {cursor: $cursor}) {
                 results {
                   parentComponentVersion {
@@ -160,7 +160,7 @@ export default class App {
             }
           }`,
           {
-            componentVersionId: rootComponentVersion.id,
+            modelId: rootComponentVersion.id,
             cursor
           }
         );
