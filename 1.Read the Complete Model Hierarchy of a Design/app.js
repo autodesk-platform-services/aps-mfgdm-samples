@@ -107,50 +107,34 @@ export default class App {
 
       let modelId = await this.getModelId(projectId, componentName);
 
-      // Get first batch of occurrences
-      let response = await this.sendQuery(
-        `query GetModelHierarchy($modelId: ID!) {
-          model(modelId: $modelId) {
-            id
-            name 
-            allOccurrences {
-              results {
-                parentComponentVersion {
-                  id 
-                }
-                componentVersion {
-                  id
-                  name
-                }
-              }
-              pagination {
-                cursor
-              }
-            }
-          }
-        }`,
-        {
-          modelId
+      let model = {
+        assemblyRelations: {
+          results: []
         }
-      );
+      };
+      let cursor = null;
 
-      let rootComponentVersion =
-        response.data.data.componentVersion;
-      let cursor = rootComponentVersion.allOccurrences.pagination.cursor;
-
-      // Keep getting the rest of the occurrences if needed
-      while (cursor) {
-        response = await this.sendQuery(
-          `query GetModelHierarchy($modelId: ID!, $cursor: String) {
-            componentVersion(modelId: $modelId) {
-              allOccurrences (pagination: {cursor: $cursor}) {
+      do {
+        // Get first batch of occurrences
+        let response = await this.sendQuery(
+          `query GetModel($modelId: ID!, $cursor: String) {
+            model(modelId: $modelId) {
+              name {
+                displayValue
+              }
+              assemblyRelations(pagination: {cursor: $cursor}) {
                 results {
-                  parentComponentVersion {
-                    id 
-                  }
-                  componentVersion {
+                  fromModel {
                     id
-                    name
+                    name {
+                      displayValue
+                    }
+                  }
+                  toModel {
+                    id
+                    name {
+                      displayValue
+                    }
                   }
                 }
                 pagination {
@@ -160,20 +144,23 @@ export default class App {
             }
           }`,
           {
-            modelId: rootComponentVersion.id,
+            modelId,
             cursor
           }
         );
 
-        rootComponentVersion.allOccurrences.results =
-          rootComponentVersion.allOccurrences.results.concat(
-            response.data.data.componentVersion.allOccurrences.results
-          );
-        cursor =
-          response.data.data.componentVersion.allOccurrences.pagination.cursor;
-      }
+        model.id = modelId;
+        model.name = response.data.data.model.name;
 
-      return rootComponentVersion;
+        model.assemblyRelations.results =
+          model.assemblyRelations.results.concat(
+            response.data.data.model.assemblyRelations.results
+          );
+
+        cursor = response.data.data.model.assemblyRelations.pagination.cursor; 
+      } while (cursor);
+
+      return model;
     } catch (err) {
       console.log("There was an issue: " + err.message);
     }
