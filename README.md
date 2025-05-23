@@ -26,8 +26,9 @@ This repository contains several samples illustrating use of Manufacturing Data 
 ---
 
 ## Prerequisites
-1. **APS Account**: Learn how to create a APS Account, activate subscription and create an app at [this tutorial](https://get-started.aps.autodesk.com/);
-2. [Node.Js](https://nodejs.org) with version > v16.13.2 and basic knowledge of JavaScript;
+Before you begin, make sure you have the following:
+1. An APS Account. You can learn how to create an APS Account, activate your subscription, and create an app by following [this](https://get-started.aps.autodesk.com/) tutorial.
+2. [Node.Js](https://nodejs.org) version 16.13.2 or higher, and a basic understanding of JavaScript.
 
 
 ## Notes
