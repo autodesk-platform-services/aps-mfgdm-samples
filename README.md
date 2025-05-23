@@ -13,20 +13,20 @@ This repository contains several samples illustrating use of Manufacturing Data 
 
 1. [Read the Complete Model Hierarchy of a Design](./1.Read%20the%20Complete%20Model%20Hierarchy%20of%20a%20Design) 
 
-   -  based on the **path to a model** (hub name, project name and file name) you can get the full model hierarchy - similar to what is shown inside **Fusion 360**.
+   -  Based on the **path to a model** (hub name, project name and file name) you can get the full model hierarchy - similar to what is shown inside **Fusion 360**.
 
 2. [Find the Thumbnail of a specific Part](./2.Find%20the%20Thumbnail%20of%20a%20specific%20Part)
    
-	-  based on the **path to a model** (hub name, project name and file name) you can get the thumbnail of a given model.
+	-  Based on the **path to a model** (hub name, project name and file name) you can get the thumbnail of a given model.
 
 3. [Get Physical Properties for Component](./3.Get%20Physical%20Properties%20for%20Component)
    
-	-  based on the **path to a model** (hub name, project name and file name) generate a physical properties (like bounding box, mass, etc) for a given model.
+	-  Based on the **path to a model** (hub name, project name and file name) generate a physical properties (like bounding box, mass, etc) for a given model.
 
 ---
 
 ## Prerequisites
-1. **APS Account**: Learn how to create a APS Account, activate subscription and create an app at [this tutorial](https://tutorials.autodesk.io/);
+1. **APS Account**: Learn how to create a APS Account, activate subscription and create an app at [this tutorial](https://get-started.aps.autodesk.com/);
 2. [Node.Js](https://nodejs.org) with version > v16.13.2 and basic knowledge of JavaScript;
 
 
