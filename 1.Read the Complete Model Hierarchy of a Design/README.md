@@ -47,39 +47,28 @@ The workflow can be achieved following these steps:
 In `app.js` file, the following GraphQL query traverses the hub, project and its items to find the design to extract the assembly hierachy from
 
 ```
-query GetModelHierarchy($hubName: String!, $projectName: String!, $componentName: String!) {
-  hubs(filter:{name:$hubName}) {
-    results {
-      name
-      projects(filter:{name:$projectName}) {
-        results {
-          name
-          items(filter:{name:$componentName}) {
-            results {
-              ... on DesignItem {
-                name
-                tipRootComponentVersion {
-                  id
-                  name 
-                  allOccurrences {
-                    results {
-                      parentComponentVersion {
-                        id 
-                      }
-                      componentVersion {
-                        id
-                        name
-                      }
-                    }
-                    pagination {
-                      cursor
-                    }
-                  }
-                }
-              }
-            }
+query GetModel($modelId: ID!, $cursor: String) {
+  model(modelId: $modelId) {
+    name {
+      displayValue
+    }
+    assemblyRelations(pagination: {cursor: $cursor}) {
+      results {
+        fromModel {
+          id
+          name {
+            displayValue
           }
         }
+        toModel {
+          id
+          name {
+            displayValue
+          }
+        }
+      }
+      pagination {
+        cursor
       }
     }
   }
