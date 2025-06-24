@@ -50,8 +50,8 @@ The workflow can be achieved following these steps:
 In `app.js` file, the following GraphQL query traverses the hub, project and its items to find the design to extract the assembly hierachy from
 
 ```
-query GetModel($modelId: ID!, $cursor: String) {
-  model(modelId: $modelId) {
+query GetModel($modelId: ID!, $time: DateTime, $cursor: String) {
+  model(modelId: $modelId, time: $time) {
     name {
       displayValue
     }
