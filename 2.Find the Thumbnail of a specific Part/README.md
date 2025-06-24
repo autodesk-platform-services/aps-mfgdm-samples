@@ -40,28 +40,12 @@ The workflow can be achieved following these steps:
 
 In `app.js` file, the following GraphQL query traverses the hub, project and its rootfolder to find the design to generate the thumbnail for
 ```
-query GetThumbnail($hubName: String!, $projectName: String!, $componentName: String!) {
-  hubs(filter:{name:$hubName}) {
-    results {
-      projects(filter:{name:$projectName}) {
-        results {
-          rootFolder {
-            items(filter:{name:$componentName}) {
-              results {
-                ... on Component {
-                  tipVersion {
-                    thumbnail {
-                      status
-                      mediumImageUrl
-                    }          
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+query GetThumbnail($modelId: ID!) {
+  model(modelId: $modelId) {
+    thumbnail {
+      status
+      signedUrl
+    }          
   }
 }
 ```

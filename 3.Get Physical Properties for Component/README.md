@@ -46,86 +46,70 @@ The workflow can be achieved following these steps:
 
 In `app.js` file, the following GraphQL query traverses the hub, project and its rootfolder to get the physycal properties of a given component
 ```
-query GetPhysicalProperties($hubName: String!, $projectName: String!, $componentName: String!) {
-  hubs(filter:{name:$hubName}) {
-    results {
-      projects(filter:{name:$projectName}) {
-        results {
-          rootFolder {
-            items(filter:{name:$componentName}) {
-              results {
-                ... on Component {
-                  tipVersion {
-                    physicalProperties {
-                      status
-                      area {
-                        displayValue
-                        propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                      }
-                      volume {
-                        displayValue
-                        propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                      }
-                      mass {
-                        displayValue
-                        value
-                        propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                      }
-                      density {
-                        displayValue
-                        propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                      }
-                      boundingBox {
-                        length {
-                          displayValue
-                          propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                        }
-                        height {
-                          displayValue
-                          propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                        }
-                        width {
-                          displayValue
-                          propertyDefinition {
-                            units {
-                              name
-                            }
-                          }
-                        }
-                      }
-                    }       
-                  }
-                }
-              }
+query GetPhysicalProperties($modelId: ID!) {
+  model(modelId: $modelId) {
+    physicalProperties {
+      status
+      area {
+        displayValue
+        definition {
+            units {
+              name
+            }
+          }
+      }
+      volume {
+        displayValue
+        definition {
+            units {
+              name
+            }
+          }
+      }
+      mass {
+        displayValue
+        value
+        definition {
+            units {
+              name
+            }
+          }
+      }
+      density {
+        displayValue
+        definition {
+            units {
+              name
+            }
+          }
+      }
+      boundingBox {
+        length {
+          displayValue
+          definition {
+            units {
+              name
+            }
+          }
+        }
+        height {
+          displayValue
+          definition {
+            units {
+              name
+            }
+          }
+        }
+        width {
+          displayValue
+          definition {
+            units {
+              name
             }
           }
         }
       }
-    }
+    }       
   }
 }
 ```
