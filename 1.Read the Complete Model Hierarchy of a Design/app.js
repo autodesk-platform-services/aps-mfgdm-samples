@@ -115,7 +115,6 @@ export default class App {
       let cursor = null;
 
       do {
-        // Get first batch of occurrences
         let response = await this.sendQuery(
           `query GetModel($modelId: ID!, $cursor: String) {
             model(modelId: $modelId) {
