@@ -101,7 +101,7 @@ export default class App {
   }
 
 // <getModelHierarchy>
-  async getModelHierarchy(hubName, projectName, componentName) {
+  async getModelHierarchy(hubName, projectName, componentName, time) {
     try {
       let projectId = await this.getProjectId(hubName, projectName);
 
@@ -116,8 +116,8 @@ export default class App {
 
       do {
         let response = await this.sendQuery(
-          `query GetModel($modelId: ID!, $cursor: String) {
-            model(modelId: $modelId) {
+          `query GetModel($modelId: ID!, $time: DateTime, $cursor: String) {
+            model(modelId: $modelId, time: $time) {
               name {
                 displayValue
               }
@@ -144,6 +144,7 @@ export default class App {
           }`,
           {
             modelId,
+            time,
             cursor
           }
         );

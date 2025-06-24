@@ -8,6 +8,7 @@ const clientSecret = '<YOUR_CLIENT_SECRET>';
 const hubName = '<YOUR_HUB_NAME>';
 const projectName = '<YOUR_PROJECT_NAME>';
 const componentName = '<YOUR_COMPONENT_NAME>';
+const timeOfVersion = '<TIME_OF_VERSION>'; // e.g. 2025-06-24T20:11:00Z
 
 // Create an instance of auth.js.
 let myApsAuth = new MyAuth(clientId, clientSecret);
@@ -23,11 +24,24 @@ let myApsApp = new MyApp(
 let info = await myApsApp.getModelHierarchy(
 	hubName,
 	projectName,
-	componentName
+	componentName,
+	timeOfVersion
 );
 
 if (info) {
-	console.log("Model hierarchy:");
+	console.log(`Model hierarchy at ${timeOfVersion}:`);
+	printInfo(info.assemblyRelations, info, "");
+} 
+
+info = await myApsApp.getModelHierarchy(
+	hubName,
+	projectName,
+	componentName,
+	null
+);
+
+if (info) {
+	console.log(`Model hierarchy now:`);
 	printInfo(info.assemblyRelations, info, "");
 } 
 

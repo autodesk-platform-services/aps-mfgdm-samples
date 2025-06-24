@@ -25,15 +25,18 @@ As instructed in the console, you'll need to open a web browser and navigate to 
 ## Output
 ```
 Open http://localhost:8080 in a web browser in order to log in with your Autodesk account!
-Model hierarchy:
-shapes
-  Round Things
-    Torus
-    Sphere
-    Cylinder
-  Box
-  New Box
-  cube
+Model hierarchy at 2025-06-24T00:00:00Z:
+bike frame
+  SPACER BEARING ROCKER - MID M10 X 14.2mm
+  SS 6000 2RS (8 X 10 X 26mm)
+  CIRCLIP INTERNAL 27.9mm OD
+...
+Model hierarchy now:
+bike frame
+  SHCS M8 X 65mm
+  RETAINER BUSHING 17mm
+  SS 6000 2RS (8 X 10 X 26mm)  
+...
 ```
 ## Workflow explanation
 
