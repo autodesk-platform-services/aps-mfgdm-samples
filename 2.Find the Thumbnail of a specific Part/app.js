@@ -8,7 +8,7 @@ import path from "path";
 // Application constructor 
 export default class App {
   constructor(accessToken) {
-    this.graphAPI = 'https://developer.api.autodesk.com/mfg/v3/graphql';
+    this.graphAPI = 'https://developer.api.autodesk.com/mfg/v3/graphql/public';
     this.accessToken = accessToken;
   }
 
