@@ -6,8 +6,8 @@ import MyAuth from './auth.js';
 const clientId = '<YOUR_CLIENT_ID>';
 const clientSecret = '<YOUR_CLIENT_SECRET>';
 const hubName = '<YOUR_HUB_NAME>';
-const propertyName = '<YOUR_PROPERTY_NAME>';
-const propertyValue = '<YOUR_PROPERTY_VALUE>';
+const propertyName = '<YOUR_PROPERTY_NAME>'; // e.g. 'Material Name'
+const propertyValue = '<YOUR_PROPERTY_VALUE>'; // e.g. 'Steel'
 
 // Create an instance of auth.js.
 let myApsAuth = new MyAuth(clientId, clientSecret);
