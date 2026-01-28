@@ -42,7 +42,7 @@ The workflow can be achieved following these steps:
 
 ## Manufacturing Data Model API Query
 
-In `app.js` file, the following GraphQL query traverses the hub, project and its rootfolder to set the value of a custom property for a given component
+In `app.js` file, the following GraphQL query searches for components in a hub with a given property value
 ```
 async searchInHub(hubName, propertyName, propertyValue) {
   try {
