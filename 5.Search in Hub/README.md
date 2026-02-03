@@ -25,6 +25,12 @@ Open http://localhost:8080 in a web browser in order to log in with your Autodes
 Search results: [
   {
     "name": "Box",
+    "matches": [
+      {
+        "matchedPropertyId": "cHJvcGRlZn5RbUZ6WlZCeWIzQmxjblJwWlhOVGRHRm5hVzVuflNXNTBjbWx1YzJsalVISnZjR1Z5ZEdsbGMwZHliM1Z3VTNSbn5SMlZ1WlhKaGJBfnBhcmFtZXRlcnMuUW1GelpWQnliM0JsY25ScFpYTlRkR0ZuYVc1bjo4MmVjZDZkZjA5NDg0YmQzYmFhZTRiY2ZiNGRhM2NjYS0xLjAuMA",
+        "matchedText": "Steel"
+      }
+    ],
     "searchResultObject": {
       "__typename": "Component",
       "id": "Y29tcH53TTBJUmZ2ZzNPVUtMdmxiMnh0Mkx0X0wyQ34"

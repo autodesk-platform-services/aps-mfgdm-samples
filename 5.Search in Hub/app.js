@@ -116,6 +116,10 @@ export default class App {
           ) {
             results {
               name
+              matches {
+                matchedPropertyId
+                matchedText
+              }
               searchResultObject {
                 __typename
                 ... on Component {
