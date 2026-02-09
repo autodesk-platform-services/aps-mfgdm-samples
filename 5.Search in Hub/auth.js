@@ -12,7 +12,7 @@ let app = express();
 export default class Auth {
   // Construct the class instance and set global variables, based on the client ID and secret. 
   constructor(clientId, clientSecret) {
-    this.host = 'https://developer-stg.api.autodesk.com/';
+    this.host = 'https://developer.api.autodesk.com/';
     this.authAPI = `${this.host}authentication/v2/`;
     this.port = 8080;
     this.redirectUri = `http://localhost:${this.port}/callback/oauth`;
