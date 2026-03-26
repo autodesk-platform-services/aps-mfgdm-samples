@@ -20,6 +20,9 @@ npm start
 ```
 As instructed in the console, you'll need to open a web browser and navigate to http://localhost:8080 in order to log into your Autodesk account 
 
+> [!IMPORTANT]
+> The sample requires that the person logged in is both the admin of the APS app whose credentials (client id and client secret) are used and also the admin of the Fusion hub that you want to link the property definition collection to.  
+
 ## Output
 ```
 Open http://localhost:8080 in a web browser in order to log in with your Autodesk account!
